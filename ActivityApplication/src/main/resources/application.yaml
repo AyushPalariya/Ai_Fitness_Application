@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ActivityApplication
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ActivityDB
+    username: root
+    password: Ayush@2003
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8081
