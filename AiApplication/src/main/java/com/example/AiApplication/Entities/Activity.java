@@ -1,21 +1,18 @@
-package com.example.ActivityApplication.Entities;
+package com.example.AiApplication.Entities;
 
+import com.example.AiApplication.Entities.ActivityType;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-@Entity
+
 @Data
 public class Activity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    @Enumerated(EnumType.STRING)
     private ActivityType type;
     private Long duration;
     private Long caloriesBurned;

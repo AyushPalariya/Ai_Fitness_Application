@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: AiApplication
+  datasource:
+    url: jdbc:mysql://localhost:3306/AiRecommendationDB
+    username: root
+    password: Ayush@2003
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: activity-processor-group
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.example.AiApplication.Entities.Activity
+        spring.json.trusted.packages: "*"
+
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://localhost:8761/eureka/
+kafka:
+  topic:
+    name: activity-events
+
+gemini:
+  api:
+    key: ${GEMINI_KEY}
+    url: ${GEMINI_URL}
+
+server:
+  port: 8082
+

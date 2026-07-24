@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-@Slf4j
+@Slf4j//this is for logger
 public class UserService {
     private final UserRepo userRepo;
 
@@ -26,6 +26,7 @@ public class UserService {
 
         User saved=userRepo.save(user);
         UserResponse userResponse=new UserResponse();
+        userResponse.setId(saved.getId());
         userResponse.setEmail(saved.getEmail());
         userResponse.setCreatedAt(saved.getCreatedAt());
         userResponse.setFirstName(saved.getFirstName());
@@ -39,7 +40,7 @@ public class UserService {
 
     public UserResponse getUsers(Long id) {
         User user=userRepo.findById(id).orElseThrow(()->new RuntimeException("User not found"));
-        UserResponse userResponse=new UserResponse(user.getFirstName(), user.getLastName(),user.getEmail(),user.getPassword()
+        UserResponse userResponse=new UserResponse(user.getId(), user.getFirstName(), user.getLastName(),user.getEmail(),user.getPassword()
                 ,user.getCreatedAt(),user.getUpdateAt());
         return userResponse;
     }

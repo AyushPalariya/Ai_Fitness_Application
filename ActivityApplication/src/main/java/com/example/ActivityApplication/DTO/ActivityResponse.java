@@ -16,6 +16,8 @@ public class ActivityResponse {
     private Long duration;
     private Long caloriesBurned;
     private LocalDateTime startTime;
+    private Double weight;
+    private Double height;
     private Map<String,Object> additionalMetrics;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
