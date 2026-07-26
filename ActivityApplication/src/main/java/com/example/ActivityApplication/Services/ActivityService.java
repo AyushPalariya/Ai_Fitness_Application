@@ -7,12 +7,14 @@ import com.example.ActivityApplication.Repository.ActivityRepo;
 import com.example.ActivityApplication.Repository.UserFiegn;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ActivityService {
     private final UserFiegn userFiegn;
     private final ActivityRepo activityRepo;
@@ -23,7 +25,7 @@ public class ActivityService {
     public ActivityResponse trackActivity(ActivityRequest activityRequest) {
         boolean isValidUser=userFiegn.validateUser(activityRequest.getUserId());
         if(!isValidUser){
-            System.out.println("working..");
+            log.info("user isNotValid working..");
             throw new RuntimeException("Invalid User: "+ activityRequest.getUserId());
         }
         Activity activity=new Activity();
