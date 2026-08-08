@@ -16,7 +16,16 @@ public class UserService {
 
     public UserResponse register(RegisterRequest registerRequest) {
         if(userRepo.existsByEmail(registerRequest.getEmail())){
-            throw new RuntimeException("Email already exist..");
+            User existUser=userRepo.findByEmail(registerRequest.getEmail());
+            UserResponse userResponse=new UserResponse();
+            userResponse.setId(existUser.getId());
+            userResponse.setEmail(existUser.getEmail());
+            userResponse.setCreatedAt(existUser.getCreatedAt());
+            userResponse.setFirstName(existUser.getFirstName());
+            userResponse.setLastName(existUser.getLastName());
+            userResponse.setPassword(existUser.getPassword());
+            userResponse.setUpdateAt(existUser.getUpdateAt());
+            return userResponse;
         }
         User user=new User();
         user.setEmail(registerRequest.getEmail());
@@ -40,13 +49,13 @@ public class UserService {
 
     public UserResponse getUsers(Long id) {
         User user=userRepo.findById(id).orElseThrow(()->new RuntimeException("User not found"));
-        UserResponse userResponse=new UserResponse(user.getId(), user.getFirstName(), user.getLastName(),user.getEmail(),user.getPassword()
+        UserResponse userResponse=new UserResponse(user.getId(),user.getKeycloakId(), user.getFirstName(), user.getLastName(),user.getEmail(),user.getPassword()
                 ,user.getCreatedAt(),user.getUpdateAt());
         return userResponse;
     }
 
-    public Boolean existByUserId(Long userId) {
+    public Boolean existByKeycloakId(String keycloakId) {
         log.info("valid working..");
-        return userRepo.existsById(userId);
+        return userRepo.existsByKeycloakId(keycloakId);
     }
 }

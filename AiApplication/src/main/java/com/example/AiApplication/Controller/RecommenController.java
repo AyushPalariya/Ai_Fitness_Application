@@ -17,7 +17,7 @@ import java.util.List;
 public class RecommenController {
 
     private final RecommenService recommenService;
-    @GetMapping("/user/userId")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Recommendation>> getUserRecommendation(@PathVariable Long userId){
         return ResponseEntity.ok().body(recommenService.getUserRec(userId));
     }

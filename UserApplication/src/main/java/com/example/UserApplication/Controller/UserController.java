@@ -23,8 +23,8 @@ public class UserController {
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody RegisterRequest registerRequest){
         return ResponseEntity.ok().body(userService.register(registerRequest));
     }
-    @GetMapping("{userId}/validate")
-    public ResponseEntity<Boolean> validateUser(@PathVariable Long userId){
-        return ResponseEntity.ok().body(userService.existByUserId(userId));
+    @GetMapping("{keycloakId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String keycloakId){
+        return ResponseEntity.ok().body(userService.existByKeycloakId(keycloakId));
     }
 }

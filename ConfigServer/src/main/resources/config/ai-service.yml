@@ -1,9 +1,4 @@
 spring:
-  application:
-    name: ai-service
-  config:
-    import: optional:configserver:http://localhost:9090
-
   datasource:
     url: jdbc:mysql://localhost:3306/AiRecommendationDB
     username: root
@@ -15,7 +10,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
+#kafkaConsumer
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -30,11 +25,14 @@ spring:
 eureka:
   client:
     serviceUrl:
-       defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
 kafka:
   topic:
     name: activity-events
-
+#gemini-api
 gemini:
   api:
     key: ${GEMINI_KEY}
@@ -42,4 +40,3 @@ gemini:
 
 server:
   port: 8082
-

@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/ActivityApplication/pom.xml" />
         <option value="$PROJECT_DIR$/DiscoveryEureka/pom.xml" />
         <option value="$PROJECT_DIR$/AiApplication/pom.xml" />
+        <option value="$PROJECT_DIR$/ConfigServer/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
       </list>
     </option>
   </component>

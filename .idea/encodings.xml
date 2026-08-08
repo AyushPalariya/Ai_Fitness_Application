@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/ActivityApplication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/AiApplication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ApiGateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ConfigServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DiscoveryEureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/UserApplication/src/main/java" charset="UTF-8" />
   </component>

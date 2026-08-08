@@ -1,33 +1,33 @@
+#database
 spring:
-  application:
-    name: activity-service
-  config:
-    import: optional:configserver:http://localhost:9090
-
   datasource:
     url: jdbc:mysql://localhost:3306/ActivityDB
     username: root
     password: Ayush@2003
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+#jpa
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
-
+#kafka_producer
   kafka:
     bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
+#eureka_config
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+#ip-address,localhost
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
 
-
+#kafka-topic-name
 kafka:
   topic:
     name: activity-events

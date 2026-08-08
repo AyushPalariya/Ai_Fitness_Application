@@ -7,7 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ApiGateway" />
         <module name="DiscoveryEureka" />
+        <module name="ConfigServer" />
       </profile>
       <profile name="Annotation profile for UserApplication" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -17,16 +19,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="UserApplication" />
-      </profile>
-      <profile name="Annotation profile for AiApplication" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
         <module name="ActivityApplication" />
+        <module name="UserApplication" />
         <module name="AiApplication" />
       </profile>
     </annotationProcessing>
@@ -35,6 +29,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ActivityApplication" options="-parameters" />
       <module name="AiApplication" options="-parameters" />
+      <module name="ApiGateway" options="-parameters" />
+      <module name="ConfigServer" options="-parameters" />
       <module name="DiscoveryEureka" options="-parameters" />
       <module name="UserApplication" options="-parameters" />
     </option>
