@@ -23,10 +23,10 @@ public class ActivityService {
     private String topicName;
 
     public ActivityResponse trackActivity(ActivityRequest activityRequest) {
-        boolean isValidUser=userFiegn.validateUser(activityRequest.getUserId());
+        boolean isValidUser=userFiegn.validateUser(activityRequest.getKeycloakId());
         if(!isValidUser){
             log.info("user isNotValid working..");
-            throw new RuntimeException("Invalid User: "+ activityRequest.getUserId());
+            throw new RuntimeException("Invalid User with keycloakId: "+ activityRequest.getKeycloakId());
         }
         Activity activity=new Activity();
         activity.setUserId(activityRequest.getUserId());
@@ -37,6 +37,7 @@ public class ActivityService {
         activity.setStartTime(activityRequest.getStartTime());
         activity.setWeight(activityRequest.getWeight());
         activity.setHeight(activityRequest.getHeight());
+        activity.setKeycloakId(activityRequest.getKeycloakId());
 
         Activity saved=activityRepo.save(activity);
         //send details in kafka
@@ -47,7 +48,7 @@ public class ActivityService {
             e.printStackTrace();
         }
         //
-        return new ActivityResponse(saved.getId(), saved.getUserId(), saved.getType(), saved.getDuration(),
+        return new ActivityResponse(saved.getId(), saved.getUserId(),saved.getKeycloakId() ,saved.getType(), saved.getDuration(),
                 saved.getCaloriesBurned(),saved.getStartTime(),saved.getWeight(),saved.getHeight(),saved.getAdditionalMetrics(),saved.getCreatedAt(),saved.getUpdateAt());
 
     }

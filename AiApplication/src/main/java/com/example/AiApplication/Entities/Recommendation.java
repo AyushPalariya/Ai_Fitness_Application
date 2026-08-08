@@ -21,6 +21,7 @@ public class Recommendation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
+    private String keycloakId;
     private Long activityId;
     private String type;
     @Lob
@@ -45,11 +46,12 @@ public class Recommendation {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    public Recommendation(Long userId, Long activityId, String type,
+    public Recommendation(Long userId, Long activityId,String keycloakId, String type,
                           String recommendation, List<String> improvements,
                           List<String> suggestion, List<String> safety, String nutrition, String summary) {
         this.userId=userId;
         this.activityId=activityId;
+        this.keycloakId=keycloakId;
         this.type=type;
         this.recommendation=recommendation;
         this.improvements=improvements;

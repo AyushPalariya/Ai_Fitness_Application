@@ -12,6 +12,8 @@ import java.util.Map;
 public class ActivityRequest {
     @NotNull(message= "userId required")
     private Long userId;
+    @NotBlank(message = "keyId required")
+    private String keycloakId;
     @NotNull(message="Select activity type")
     private ActivityType type;
     @NotNull(message = "weight is required in Kg")

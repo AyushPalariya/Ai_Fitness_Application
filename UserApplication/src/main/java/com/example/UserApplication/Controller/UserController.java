@@ -15,7 +15,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserProfile(@PathVariable Long id){
         return ResponseEntity.ok().body(userService.getUsers(id));
     }
@@ -23,7 +23,7 @@ public class UserController {
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody RegisterRequest registerRequest){
         return ResponseEntity.ok().body(userService.register(registerRequest));
     }
-    @GetMapping("{keycloakId}/validate")
+    @GetMapping("/{keycloakId}/validate")
     public ResponseEntity<Boolean> validateUser(@PathVariable String keycloakId){
         return ResponseEntity.ok().body(userService.existByKeycloakId(keycloakId));
     }

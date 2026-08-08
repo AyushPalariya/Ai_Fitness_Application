@@ -12,7 +12,7 @@ import java.util.List;
 public class RecommenService {
     private final RecommenRepo recommenRepo;
     public List<Recommendation> getUserRec(Long userId) {
-        return recommenRepo.findByUserId(userId);
+        return recommenRepo.findByUserId((userId));
     }
 
     public Recommendation getActivityRec(Long id) {

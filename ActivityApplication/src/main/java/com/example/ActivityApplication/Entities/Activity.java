@@ -15,6 +15,7 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
+    private String keycloakId;
     @Enumerated(EnumType.STRING)
     private ActivityType type;
     private Long duration;

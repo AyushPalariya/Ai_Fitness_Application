@@ -12,6 +12,7 @@ import java.util.Map;
 public class ActivityResponse {
     private Long id;
     private Long userId;
+    private String keycloakId;
     private ActivityType type;
     private Long duration;
     private Long caloriesBurned;

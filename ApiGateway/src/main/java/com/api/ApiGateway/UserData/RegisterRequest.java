@@ -1,4 +1,4 @@
-package com.example.UserApplication.DTO;
+package com.api.ApiGateway.UserData;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

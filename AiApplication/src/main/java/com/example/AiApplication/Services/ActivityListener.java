@@ -17,7 +17,7 @@ public class ActivityListener {
 
     @KafkaListener(topics = "${kafka.topic.name}",groupId = "activity-processor-group")
     public void processActivity(Activity activity){
-        log.info("Received activity for processing: {}", activity.getUserId());
+        log.info("Received activity for processing: {}", activity.getKeycloakId());
         Recommendation recommendation = activityAiGemini.generateRecommendation(activity);
         log.info("Database saving point");
         recommenRepo.save(recommendation);

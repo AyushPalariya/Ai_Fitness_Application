@@ -19,6 +19,7 @@ public class UserService {
             User existUser=userRepo.findByEmail(registerRequest.getEmail());
             UserResponse userResponse=new UserResponse();
             userResponse.setId(existUser.getId());
+            userResponse.setKeycloakId(existUser.getKeycloakId());
             userResponse.setEmail(existUser.getEmail());
             userResponse.setCreatedAt(existUser.getCreatedAt());
             userResponse.setFirstName(existUser.getFirstName());
@@ -32,6 +33,7 @@ public class UserService {
         user.setFirstName(registerRequest.getFirstName());
         user.setLastName(registerRequest.getLastName());
         user.setPassword(registerRequest.getPassword());
+        user.setKeycloakId(registerRequest.getKeycloakId());
 
         User saved=userRepo.save(user);
         UserResponse userResponse=new UserResponse();
@@ -42,6 +44,7 @@ public class UserService {
         userResponse.setLastName(saved.getLastName());
         userResponse.setPassword(saved.getPassword());
         userResponse.setUpdateAt(saved.getUpdateAt());
+        userResponse.setKeycloakId(saved.getKeycloakId());
 
         return userResponse;
 
@@ -55,7 +58,7 @@ public class UserService {
     }
 
     public Boolean existByKeycloakId(String keycloakId) {
-        log.info("valid working..");
+        log.info("valid working userId{}",keycloakId);
         return userRepo.existsByKeycloakId(keycloakId);
     }
 }

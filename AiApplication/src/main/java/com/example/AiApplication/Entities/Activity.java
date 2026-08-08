@@ -13,6 +13,7 @@ import java.util.Map;
 public class Activity {
     private Long id;
     private Long userId;
+    private String keycloakId;
     private ActivityType type;
     private Long duration;
     private Long caloriesBurned;

@@ -104,13 +104,13 @@ public class ActivityAiGemini {
             StringBuilder summarySb=new StringBuilder();
             summarySb.append("Summary: ").append(summaryNode.asString()).append("\n");
 
-            return new Recommendation(activity.getUserId(),activity.getId(),
+            return new Recommendation(activity.getUserId(),activity.getId(), activity.getKeycloakId(),
                     activity.getType().toString(),analysisSb.toString(),improvements,suggestion
                     ,safety,nutritionSb.toString(),summarySb.toString());
         }
         catch (Exception e){
             e.printStackTrace();
-            return new Recommendation(activity.getUserId(),activity.getId(),
+            return new Recommendation(activity.getUserId(),activity.getId(), activity.getKeycloakId(),
                     activity.getType().toString(),"Unable to generate detailed analysis.",
                     List.of("Continue with your current routine."),
                     List.of("Continue with your previous suggestion.")
